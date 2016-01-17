@@ -58,4 +58,19 @@ There are so many more features that we could add to improve the functionality a
 Hieu met Rohit at a shuttle stop in the visitors parking lot at Rice University in Houston, TX. They had both driven several hours from other cities (Hieu from Austin, Rohit from Arlington), and arrived on campus around 7pm to attend HackRice 2016. Both were completely lost, but managed to find their way to the hackathon with the help of three friendly Rice students. There, they shared a table together, discussing potential project ideas. Intuitive Machines was one of the hackathon's sponsors offering a special prize for working with their data set. With no other exciting prospective projects in mind, we went to work.
 
 
+## Setup and Deployment
+
+### Tools needed
+- NodeJS and npm
+- Stellarium
+
+### Deployment Instructions
+- Create your own Google Maps Geolocation API key. Remove contents of API_KEY.TXT and paste your Google Maps Geolocation API key there. 
+- Launch the server process on the server machine:
+export GEO_API_KEY=$(cat API_KEY.TXT); nodejs server.js
+- Open a web browser on any machine that can access the server and open the URL:
+http://server-ip:8080
+
+
 ## Fin.
+=======

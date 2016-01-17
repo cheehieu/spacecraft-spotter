@@ -1,0 +1,4 @@
+Remove this and paste your Google Maps Geolocation API key here. Then do
+export GEO_API_KEY=$(cat API_KEY.TXT)
+on the command line and start the server.
+
