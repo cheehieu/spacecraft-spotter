@@ -48,4 +48,10 @@ Hieu met Rohit at a shuttle stop in the visitors parking lot at Rice University 
 
 
 ## What's next for spacecraft-spotter
+There are so many more features that we could add to improve the functionality and performance of this project. Although it was fun to build, it is unlikely that we will revisit it. We live in different cities, and Rohit is finishing up his last semester of school!
 
+
+## Misc.
+Hieu met Rohit at a shuttle stop in the visitors parking lot at Rice University in Houston, TX. They had both driven several hours from other cities (Hieu from Austin, Rohit from Arlington), and arrived on campus around 7pm to attend HackRice 2016. Both were completely lost, but managed to find their way to the hackathon with the help of three friendly Rice students. There, they shared a table together, discussing potential project ideas. Intuitive Machines was one of the hackathon's sponsors offering a special prize for working with their data set. With no other exciting prospective projects in mind, we went to work.
+
+## Fin.
