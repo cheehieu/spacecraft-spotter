@@ -7,6 +7,8 @@ This project was completed for HackRice 2016 by [Rohit Rawat] (http://devpost.co
 ## Inspiration
 This project was inspired by Intuitive Machine's Terrestrial Return Vehicle (TRV) TRaVeller spacecraft, and the suggested project statement to "let a user know if TRV is visible from their current location." The [TRV](https://intuitivemachines.com/Aerospace/SpaceSystems/) is an automated precision return vehicle, designed to deliver a scientific payload to a Low Earth Orbit (and beyond) and autonomously re-enter the Earth's atmosphere for a safe, precision landing. The initial idea was to create an Android application based on the open source Google Sky Map project, allowing users to explore the current location of the TRV on their mobile devices -- an augmented reality window of the night sky.
 
+<img src="http://niftyhedgehog.com/spacecraft-spotter/images/TRV.png" width="400">
+
 We also sat in the Google Cloud Platform workshop at HackRice and learned how to use Firebase to build real-time web applications, which was incorporated into the project's cloud infrastructure.
 
 
@@ -17,9 +19,19 @@ Spacecraft-Spotter is a web application that utilizes real telemetry data from t
 ## How we built it
 The web app runs on a virtual server on the Google Cloud Platform. The frontend web interface was built with HTML, Bootstrap, Javascript, jQuery, and Underscore.js. Backend cloud services were provided by Firebase, which hosted the static site and its data content. Geolocation API's from Google Maps and freegeoip were used to determine a user's location based on their IP address. Alternatively, the user can specify a different city or custom latitude/longitude. With this information, Stellarium (a planetarium software) can generate a simulated view of the sky from that location, showing exactly what you would see when you look up at the stars. This 180-degree FOV view was then exported to a PNG image.
 
-Intuitive Machines provided a CSV file of simulated telemetry data of a TRV landing from the ISS to Vandenberg Air Force Base in California. This CSV file contained over 200,000 data entries for various TRV characteristics including mission time, sensor states, propellant and engine statuses, velocity/acceleration, attitude quaternions, and more. A Python script utilized NumPy data structures to parse and manipulate the CSV data to determine the TRV's latitude, longitude, altitude, and flight path angle. A calculated transformation was done to map the spacecraft's lat/long coordinates into the user's sky perspective at a discrete timestep. A further transformation was done with ImageMagick to overlay an image of the TRV onto the Stellarium image, incorporating the spacecraft's position in the sky, flight path angle, and altitude. The TRV image rotates over time corresponding to the flight path, and the closer it gets to landing, the bigger it appears on the sky map.
+<img src="http://niftyhedgehog.com/spacecraft-spotter/images/webapp_location.png">
+
+Intuitive Machines provided a CSV file of simulated telemetry data of a TRV landing from the ISS to Vandenberg Air Force Base in California. This CSV file contained over 200,000 data entries for various TRV characteristics including mission time, sensor states, propellant and engine statuses, velocity/acceleration, attitude quaternions, and more. A Python script utilized NumPy data structures to parse and manipulate the CSV data to determine the TRV's latitude, longitude, altitude, and flight path angle. 
+
+<img src="http://niftyhedgehog.com/spacecraft-spotter/images/telemetry_data.png">
+
+A calculated transformation was done to map the spacecraft's lat/long coordinates into the user's sky perspective at a discrete timestep. A further transformation was done with ImageMagick to overlay an image of the TRV onto the Stellarium image, incorporating the spacecraft's position in the sky, flight path angle, and altitude. The TRV image rotates over time corresponding to the flight path, and the closer it gets to landing, the bigger it appears on the sky map.
+
+<img src="http://niftyhedgehog.com/spacecraft-spotter/images/output.png">
 
 The output overlay image is then displayed back on the web interface. An extra feature was added to "animate" the flight by generating overlayed images at discrete timesteps and displaying them in sequential order.
+
+<img src="http://niftyhedgehog.com/spacecraft-spotter/images/webapp.png">
 
 
 ## Challenges we ran into
