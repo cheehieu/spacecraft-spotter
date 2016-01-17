@@ -1,0 +1,23 @@
+//core.setGuiVisible(false);
+
+// While we're setting up, change the time to go nice and slow
+LabelMgr.deleteAllLabels();
+core.setRealTime(); //stops time
+
+// Setup display mode
+core.clear("natural");
+
+// We'll turn these off as the sun comes up, but for pre-dawn we want to show them
+ConstellationMgr.setFlagLines(true);
+ConstellationMgr.setFlagLabels(true);
+SolarSystem.setFlagPlanets(true);
+
+// OK, move to the proper location and date for the eclipse
+//core.setDate("2009:07:21T22:05:00");
+
+// Point at a bit of sky approx above the Eastern horizon
+StelMovementMgr.zoomTo(180, 0);
+core.setObserverLocation(LONGITUDE, LATITUDE, 10, 0, "NAME");
+core.wait(3);
+
+//LandscapeMgr.setFlagAtmosphere(false);
