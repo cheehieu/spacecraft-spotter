@@ -23,3 +23,16 @@ This project was inspired by Intuitive Machine's Terrestrial Return Vehicle (TRV
 
 ## What's next for spacecraft-spotter
 
+## Setup and Deployment
+
+### Tools needed
+- NodeJS and npm
+- Stellarium
+
+### Deployment Instructions
+- Create your own Google Maps Geolocation API key. Remove contents of API_KEY.TXT and paste your Google Maps Geolocation API key there. 
+- Launch the server process on the server machine:
+export GEO_API_KEY=$(cat API_KEY.TXT); nodejs server.js
+- Open a web browser on any machine that can access the server and open the URL:
+http://server-ip:8080
+
