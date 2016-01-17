@@ -1,23 +1,27 @@
+// Stellarium script with placeholders
+// Adapted from: http://sourceforge.net/p/stellarium/code/HEAD/tree/trunk/stellarium/scripts/solar_eclipse.ssc
+
 //core.setGuiVisible(false);
 
-// While we're setting up, change the time to go nice and slow
 LabelMgr.deleteAllLabels();
-core.setRealTime(); //stops time
+core.setRealTime();
 
 // Setup display mode
 core.clear("natural");
 
-// We'll turn these off as the sun comes up, but for pre-dawn we want to show them
 ConstellationMgr.setFlagLines(true);
 ConstellationMgr.setFlagLabels(true);
 SolarSystem.setFlagPlanets(true);
 
-// OK, move to the proper location and date for the eclipse
+// We can also move to a specific date
 //core.setDate("2009:07:21T22:05:00");
 
-// Point at a bit of sky approx above the Eastern horizon
+// We point straight up with a full 180 degree field of view
 StelMovementMgr.zoomTo(180, 0);
+
+// Move to the desired latitude and longitude, 10m high
 core.setObserverLocation(LONGITUDE, LATITUDE, 10, 0, "NAME");
 core.wait(3);
 
+// Uncomment to turn of sun's glare and night pollution
 //LandscapeMgr.setFlagAtmosphere(false);

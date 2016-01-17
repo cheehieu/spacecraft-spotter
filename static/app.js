@@ -1,3 +1,4 @@
+// Client side Javascript for Spaceship Spotter app
 $(document).ready(function() {
 
     var autoPlaceName = 'location';
@@ -7,14 +8,15 @@ $(document).ready(function() {
     var MAX_TIME = 3000;
     var animation_running = false;
     var COUNT_RESET = 300;
+    var FRAME_STEP = 50;
 
-
+    // attempt to determine user's location
     jQuery.ajax({
         url: '//freegeoip.net/json/',
         type: 'POST',
         dataType: 'jsonp',
         success: function(location) {
-            console.log(location);
+            //console.log(location);
 
             // example where I update content on the page.
             jQuery('#placeName').val(location.city);
@@ -34,10 +36,7 @@ $(document).ready(function() {
         }
     });
 
-    // jQuery.get("execute", function(data, status) {
-    //     console.log(data);
-    // });
-
+    // submission of latitude and longitude data
     $('#submitLLButton').click(function(e) {
         $.ajax({
             url: 'execute',
@@ -63,8 +62,9 @@ $(document).ready(function() {
         });
     });
 
+    // submission of city name, address, or zip-code
     $('#submitCityButton').click(function(e) {
-        console.log(time);
+        //console.log(time);
         if (jQuery('#placeName').val() == "") {
             alert("City is empty!");
             return;
@@ -88,7 +88,8 @@ $(document).ready(function() {
                 $('.skyImage').attr({
                     "src": 'sky.png?' + new Date().getTime()
                 });
-                console.log(result);
+                //console.log(result);
+                // Update the text fields with improved data from Google
                 jQuery('#latitude').val(result.latitude);
                 jQuery('#longitude').val(result.longitude);
                 jQuery('#placeName').val(result.city);
@@ -99,6 +100,7 @@ $(document).ready(function() {
     var count = 300;
     var redrawBackgroundCount = 1;
 
+    // animation
     $('#submitAnimateButton').click(function(e) {
 
         if (animation_running == true) {
@@ -109,27 +111,26 @@ $(document).ready(function() {
             return;
         }
 
+        // Draw an initial frame with fresh background
         count = COUNT_RESET;
         redrawBackgroundCount = 1;
-
         drawFrame(count, true, redrawBackgroundCount);
-
         redrawBackgroundCount = 0;
 
 
+        // Create animation by requesting images with new timestamps and Ticker
         createjs.Ticker.setInterval(2000);
-
         createjs.Ticker.addEventListener("tick", tick);
         animation_running = true;
 
-
+        // Change button text
         $('#submitAnimateButton').text('Stop Animation');
 
         function tick() {
             console.log("TICK!!!" + count);
             drawFrame(count, false, redrawBackgroundCount);
-            count = count + 50;
-            // redrawBackgroundCount = 1-redrawBackgroundCount;
+            count = count + FRAME_STEP;
+            // redrawBackgroundCount = 1-redrawBackgroundCount; // to redraw in alternate frames
             if (count > MAX_TIME) {
                 count = COUNT_RESET;
             }
@@ -137,9 +138,9 @@ $(document).ready(function() {
 
     });
 
-
+    // requests server to draw a new spaceship frame at the given time
     function drawFrame(timeVal, doLookup, redrawBackground) {
-        console.log(timeVal);
+        //console.log(timeVal);
         $.ajax({
             url: 'execute',
             type: 'POST',
@@ -159,7 +160,7 @@ $(document).ready(function() {
                 $('.skyImage').attr({
                     "src": 'sky.png?' + new Date().getTime()
                 });
-                console.log(result);
+                //console.log(result);
                 jQuery('#latitude').val(result.latitude);
                 jQuery('#longitude').val(result.longitude);
                 jQuery('#placeName').val(result.city);
