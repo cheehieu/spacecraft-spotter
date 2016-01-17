@@ -19,10 +19,65 @@
     </section>
 
     <section class="main-content">
-      <h2>
+      <h1>
+<a id="spacecraft-spotter" class="anchor" href="#spacecraft-spotter" aria-hidden="true"><span class="octicon octicon-link"></span></a>spacecraft-spotter</h1>
+
+<p>This project was completed for HackRice 2016 by <a href="http://devpost.com/PolloLoco">Rohit Rawat</a> and <a href="http://devpost.com/hieu">Hieu Nguyen</a>.</p>
+
+<p><img src="http://niftyhedgehog.com/spacecraft-spotter/images/TRV_display.jpg"></p>
+
+<h2>
 <a id="inspiration" class="anchor" href="#inspiration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inspiration</h2>
 
-<p>This project was inspired by Intuitive Machine's Terrestrial Return Vehicle (TRV) TRaVeller spacecraft, and the suggested project statement to "let a user know if TRV is visible from their current location." The <a href="https://intuitivemachines.com/Aerospace/SpaceSystems/">TRV</a> is an automated precision return vehicle, designed to deliver a scientific payload to a Low Earth Orbit (and beyond) and autonomously re-enter the Earth's atmosphere for a safe, precision landing.</p>
+<p>This project was inspired by Intuitive Machine's Terrestrial Return Vehicle (TRV) TRaVeller spacecraft, and the suggested project statement to "let a user know if TRV is visible from their current location." The <a href="https://intuitivemachines.com/Aerospace/SpaceSystems/">TRV</a> is an automated precision return vehicle, designed to deliver a scientific payload to a Low Earth Orbit (and beyond) and autonomously re-enter the Earth's atmosphere for a safe, precision landing. The initial idea was to create an Android application based on the open source Google Sky Map project, allowing users to explore the current location of the TRV on their mobile devices -- an augmented reality window of the night sky.</p>
+
+<p>We also sat in the Google Cloud Platform workshop at HackRice and learned how to use Firebase to build real-time web applications, which was incorporated into the project's cloud infrastructure.</p>
+
+<h2>
+<a id="what-it-does" class="anchor" href="#what-it-does" aria-hidden="true"><span class="octicon octicon-link"></span></a>What it does</h2>
+
+<p>Spacecraft-Spotter is a web application that utilizes real telemetry data from the TRV to map its position in a simulated sky, allowing users to locate the vehicle in their own sky overhead as it makes its way home from the International Space Station. It was built to help people learn more about the TRV spacecraft and to interactively follow its mission in an engaging manner.</p>
+
+<h2>
+<a id="how-we-built-it" class="anchor" href="#how-we-built-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How we built it</h2>
+
+<p>The web app runs on a virtual server on the Google Cloud Platform. The frontend web interface was built with HTML, Bootstrap, Javascript, jQuery, and Underscore.js. Backend cloud services were provided by Firebase, which hosted the static site and its data content. Geolocation API's from Google Maps and freegeoip were used to determine a user's location based on their IP address. Alternatively, the user can specify a different city or custom latitude/longitude. With this information, Stellarium (a planetarium software) can generate a simulated view of the sky from that location, showing exactly what you would see when you look up at the stars. This 180-degree FOV view was then exported to a PNG image.</p>
+
+<p>Intuitive Machines provided a CSV file of simulated telemetry data of a TRV landing from the ISS to Vandenberg Air Force Base in California. This CSV file contained over 200,000 data entries for various TRV characteristics including mission time, sensor states, propellant and engine statuses, velocity/acceleration, attitude quaternions, and more. A Python script utilized NumPy data structures to parse and manipulate the CSV data to determine the TRV's latitude, longitude, altitude, and flight path angle. A calculated transformation was done to map the spacecraft's lat/long coordinates into the user's sky perspective at a discrete timestep. A further transformation was done with ImageMagick to overlay an image of the TRV onto the Stellarium image, incorporating the spacecraft's position in the sky, flight path angle, and altitude. The TRV image rotates over time corresponding to the flight path, and the closer it gets to landing, the bigger it appears on the sky map.</p>
+
+<p>The output overlay image is then displayed back on the web interface. An extra feature was added to "animate" the flight by generating overlayed images at discrete timesteps and displaying them in sequential order.</p>
+
+<h2>
+<a id="challenges-we-ran-into" class="anchor" href="#challenges-we-ran-into" aria-hidden="true"><span class="octicon octicon-link"></span></a>Challenges we ran into</h2>
+
+<p>We ran into several challenges throughout this project. As a demo, the web application was functional, but not optimized for performance. The largest bottleneck on latency was due to having to run the Stellarium software locally on the server. We could not find a good, open web API to generate an image of the sky based on the user's location. So, we had to settle with an offline solution of Stellarium.</p>
+
+<p>It also took some time to fully interpret the telemetry data in the CSV file. Parsing the information is one task, but manipulating the data to ensure proper unit conversions and coordinate system transformations proved to be non-trivial. A less-than-ideal workaround was used to position the spacecraft into the sky image; it may not be 100% accurate, but it's good enough to display a landing pattern that can deceive the untrained eye.</p>
+
+<h2>
+<a id="accomplishments-that-were-proud-of" class="anchor" href="#accomplishments-that-were-proud-of" aria-hidden="true"><span class="octicon octicon-link"></span></a>Accomplishments that we're proud of</h2>
+
+<p>HackRice 2016 was both of our first hackathons, so we're proud to have gone through the experience (and to actually submit a project). We were fairly late in the game when we settled on this idea, so it was very rewarding to collaborate and see the project come alive. We were just a team of two this time around, but just imagine what we could do with a team of three!</p>
+
+<p>This was also Rohit's first Node.js application!</p>
+
+<h2>
+<a id="what-we-learned" class="anchor" href="#what-we-learned" aria-hidden="true"><span class="octicon octicon-link"></span></a>What we learned</h2>
+
+<p>A lot! Both of us worked with new technologies and API's that we were previously unfamiliar with. We learned about Firebase and the Google Cloud Platform that same day from a locally-hosted seminar. We also learned about autonomous spacecraft landings, astronomy, celestial coordinates, and how MLH works.</p>
+
+<h2>
+<a id="whats-next-for-spacecraft-spotter" class="anchor" href="#whats-next-for-spacecraft-spotter" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's next for spacecraft-spotter</h2>
+
+<p>There are so many more features that we could add to improve the functionality and performance of this project. Although it was fun to build, it is unlikely that we will revisit it. We live in different cities, and Rohit is finishing up his last semester of school!</p>
+
+<h2>
+<a id="misc" class="anchor" href="#misc" aria-hidden="true"><span class="octicon octicon-link"></span></a>Misc.</h2>
+
+<p>Hieu met Rohit at a shuttle stop in the visitors parking lot at Rice University in Houston, TX. They had both driven several hours from other cities (Hieu from Austin, Rohit from Arlington), and arrived on campus around 7pm to attend HackRice 2016. Both were completely lost, but managed to find their way to the hackathon with the help of three friendly Rice students. There, they shared a table together, discussing potential project ideas. Intuitive Machines was one of the hackathon's sponsors offering a special prize for working with their data set. With no other exciting prospective projects in mind, we went to work.</p>
+
+<h2>
+<a id="fin" class="anchor" href="#fin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fin.</h2>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/cheehieu/spacecraft-spotter">Spacecraft-spotter</a> is maintained by <a href="https://github.com/cheehieu">cheehieu</a>.</span>
