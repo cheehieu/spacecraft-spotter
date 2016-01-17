@@ -2,11 +2,10 @@
 
 This project was completed for HackRice 2016 by [Rohit Rawat] (http://devpost.com/PolloLoco) and [Hieu Nguyen](http://devpost.com/hieu).
 
+<img src="http://niftyhedgehog.com/spacecraft-spotter/images/TRV_display.jpg">
 
 ## Inspiration
 This project was inspired by Intuitive Machine's Terrestrial Return Vehicle (TRV) TRaVeller spacecraft, and the suggested project statement to "let a user know if TRV is visible from their current location." The [TRV](https://intuitivemachines.com/Aerospace/SpaceSystems/) is an automated precision return vehicle, designed to deliver a scientific payload to a Low Earth Orbit (and beyond) and autonomously re-enter the Earth's atmosphere for a safe, precision landing. The initial idea was to create an Android application based on the open source Google Sky Map project, allowing users to explore the current location of the TRV on their mobile devices -- an augmented reality window of the night sky.
-
-(http://niftyhedgehog.com/spacecraft-spotter/images/TRV_display.jpg)
 
 We also sat in the Google Cloud Platform workshop at HackRice and learned how to use Firebase to build real-time web applications, which was incorporated into the project's cloud infrastructure.
 
@@ -46,12 +45,5 @@ There are so many more features that we could add to improve the functionality a
 ## Misc.
 Hieu met Rohit at a shuttle stop in the visitors parking lot at Rice University in Houston, TX. They had both driven several hours from other cities (Hieu from Austin, Rohit from Arlington), and arrived on campus around 7pm to attend HackRice 2016. Both were completely lost, but managed to find their way to the hackathon with the help of three friendly Rice students. There, they shared a table together, discussing potential project ideas. Intuitive Machines was one of the hackathon's sponsors offering a special prize for working with their data set. With no other exciting prospective projects in mind, we went to work.
 
-
-## What's next for spacecraft-spotter
-There are so many more features that we could add to improve the functionality and performance of this project. Although it was fun to build, it is unlikely that we will revisit it. We live in different cities, and Rohit is finishing up his last semester of school!
-
-
-## Misc.
-Hieu met Rohit at a shuttle stop in the visitors parking lot at Rice University in Houston, TX. They had both driven several hours from other cities (Hieu from Austin, Rohit from Arlington), and arrived on campus around 7pm to attend HackRice 2016. Both were completely lost, but managed to find their way to the hackathon with the help of three friendly Rice students. There, they shared a table together, discussing potential project ideas. Intuitive Machines was one of the hackathon's sponsors offering a special prize for working with their data set. With no other exciting prospective projects in mind, we went to work.
 
 ## Fin.
